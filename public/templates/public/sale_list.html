@@ -1,0 +1,32 @@
+{% extends 'public/base.html' %}
+
+{% block content %}
+    <h1 class="mb-4 mt-4">Comixology sales</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Sale name</th>
+                <th scope="col">Items</th>
+                <th scope="col">
+                    <span class="text-nowrap">Valid until</span>
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sale_list %}
+                <tr>
+                    <td>{{ sale.title }}</td>
+                    <td>{{ sale.num_items }}</td>
+                    <td>
+                        <span class="text-nowrap">{{ sale.date_end|date:'M d' }}</span>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="{{ sale.url }}" target="_blank">Go to sale</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
