@@ -5,13 +5,13 @@ name = "pypi"
 
 [packages]
 django = "*"
-requests = "*"
 scrapy = "*"
 ipdb = "*"
 dj-database-url = "*"
 gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
+sendgrid = "*"
 
 [dev-packages]
 
