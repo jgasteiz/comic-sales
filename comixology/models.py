@@ -7,6 +7,7 @@ class Sale(models.Model):
     date_end = models.DateField()
     url = models.URLField()
     num_items = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['date_end', 'title']

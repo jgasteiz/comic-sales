@@ -4,7 +4,8 @@ from . import models
 
 
 class SaleAdmin(admin.ModelAdmin):
-    list_display = ['platform_id', 'title', 'date_end', 'num_items', 'url']
+    ordering = ['-created_at', 'title']
+    list_display = ['platform_id', 'title', 'date_end', 'num_items', 'url', 'created_at']
     search_fields = ['title']
 
 
