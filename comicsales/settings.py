@@ -126,3 +126,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Configure heroku db.
 django_heroku.settings(locals())
 DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+
+# Only https
+SECURE_SSL_REDIRECT = True
