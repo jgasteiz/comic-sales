@@ -9,7 +9,7 @@ class Sale(models.Model):
     num_items = models.IntegerField()
 
     class Meta:
-        ordering = ['date_end']
+        ordering = ['date_end', 'title']
 
     def __str__(self):
         return f'{self.title} - {self.num_items} items - ends on {self.date_end}'
