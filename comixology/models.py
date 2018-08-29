@@ -8,6 +8,7 @@ class Sale(models.Model):
     url = models.URLField()
     num_items = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    cover_url = models.URLField(blank=True)
 
     class Meta:
         ordering = ['date_end', 'title']

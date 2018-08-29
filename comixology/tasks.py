@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 from datetime import datetime
 
@@ -66,6 +67,10 @@ class SalesSpider(scrapy.Spider):
         sale.num_items = int(sale_json.get('count'))
         date_end_str = sale_json.get('subtitle').split(',')[-1].strip()
         sale.date_end = datetime.strptime(date_end_str, '%d/%m/%Y').date()
+        try:
+            sale.cover_url = sale_json.get('items')[0].get('imageUrl')
+        except Exception:
+            logging.info(f"Couldn't get the cover url for the {sale.title} sale: {sale.url}")
         sale.save()
 
         # If it's a new sale, send an email

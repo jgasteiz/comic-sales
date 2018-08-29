@@ -17,7 +17,14 @@
         <tbody>
             {% for sale in sale_list %}
                 <tr>
-                    <td>{{ sale.title }}</td>
+                    <td>
+                        <span class="h5 d-block">{{ sale.title }}</span>
+                        <img class="rounded d-block"
+                             src="{{ sale.cover_url }}"
+                             alt="{{ sale.title }} cover"
+                             style="max-width: 160px"
+                        >
+                    </td>
                     <td>{{ sale.num_items }}</td>
                     <td>
                         <span class="text-nowrap">{{ sale.date_end|date:'M d' }}</span>
