@@ -9,4 +9,10 @@ class SaleAdmin(admin.ModelAdmin):
     search_fields = ['title']
 
 
+class WishListComicAdmin(admin.ModelAdmin):
+    ordering = ['title']
+    list_display = ['title', 'url']
+
+
 admin.site.register(models.Sale, SaleAdmin)
+admin.site.register(models.WishListComic, WishListComicAdmin)
