@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = []
 
@@ -127,5 +127,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 django_heroku.settings(locals())
 DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 
-# Only https
-SECURE_SSL_REDIRECT = True
+if not DEBUG:
+    # Only https
+    SECURE_SSL_REDIRECT = True
