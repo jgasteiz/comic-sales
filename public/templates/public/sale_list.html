@@ -8,20 +8,20 @@
         {% for sale in sale_list %}
             <li class="list-group-item">
                 <div class="row">
-                    <div class="col-6 col-md-auto">
+                    <div class="col-5 col-md-auto">
                         <img class="rounded d-block mw-100"
                              src="{{ sale.cover_url }}"
                              alt="{{ sale.title }} cover"
                         >
                     </div>
-                    <div class="col">
-                        <div class="row">
-                            <h2 class="h4 col mb-4">{{ sale.title }}</h2>
-                            <div class="col-auto">
+                    <div class="col-7 col-md d-flex flex-column">
+                        <div class="row mb-2">
+                            <h2 class="h4 col">{{ sale.title }}</h2>
+                            <div class="col-lg-auto">
                                 <span class="badge badge-primary badge-pill">{{ sale.num_items }} items</span>
                             </div>
                         </div>
-                        <p class="mb-2">Sale Ends on {{ sale.date_end|date:'l, dS F Y' }}.</p>
+                        <p class="mb-2 flex-grow-1">Sale Ends on {{ sale.date_end|date:'l, dS F Y' }}.</p>
                         <a class="btn btn-primary btn-lg btn-block" href="{{ sale.url }}" target="_blank">Go to sale</a>
                     </div>
                 </div>
