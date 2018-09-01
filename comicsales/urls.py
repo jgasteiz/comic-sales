@@ -23,6 +23,7 @@ from public import views as public_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    url(r'^api/all-sales$', public_views.api_all_sales, name='api_all_sales'),
     url(r'^api/last-sales$', public_views.api_last_sales, name='api_last_sales'),
 
     url(r'^$', public_views.sale_list, name='sale_list'),
