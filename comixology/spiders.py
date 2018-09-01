@@ -85,11 +85,47 @@ class SalesSpider(scrapy.Spider):
         if created:
             email_tasks.send_sale_email(sale)
 
-        # Finally, look for wishlist items on the sale.
-        yield response.follow(
-                f'https://m.comixology.co.uk/comics-sale?list_id={sale_platform_id}',
+
+class WishlistComicSpider(scrapy.Spider):
+    name = "wishlist_comics"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.wishlist_ids = models.WishListComic.objects.filter(notified=False).values_list('platform_id', flat=True)
+
+    def start_requests(self):
+        urls = [
+            'https://m.comixology.co.uk/comics-sale',
+        ]
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+
+    def parse(self, response):
+        sales_text = response.css('#server-vars::text').extract_first()
+        sales_json = json.loads(sales_text)
+        sliders = sales_json.get('pageSliders')
+        sale_ids = [s.get('id') for s in sliders]
+
+        for sale_id in sale_ids:
+            yield response.follow(
+                f'https://m.comixology.co.uk/comics-sale?list_id={sale_id}',
                 self.parse_sale_wishlist)
 
-    # TODO: parse each of the sale pages looking for wishlist items.
     def parse_sale_wishlist(self, response):
-        pass
+        """
+        Look for comics in the wishlist_ids list.
+        """
+        for comic_id in self.wishlist_ids:
+            comic_urls = response.css('.comic-item .content-img-link::attr(href)').extract()
+            matches = [url for url in comic_urls
+                       if url.endswith(str(comic_id))]
+            if len(matches) > 0:
+                wishlist_comic = models.WishListComic.objects.get(platform_id=comic_id)
+                email_tasks.send_wishlist_item_email(wishlist_comic)
+                wishlist_comic.notified = True
+                wishlist_comic.save()
+
+        # Go to the next page
+        next_url = response.css('.pagination-page.next a::attr(href)').extract_first()
+        if next_url and next_url != '#':
+            yield response.follow(next_url, self.parse_sale_wishlist)
