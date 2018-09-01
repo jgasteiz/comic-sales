@@ -19,12 +19,12 @@ def sale_list(request):
 def api_all_sales(request):
     today = timezone.datetime.today().date()
     comic_sales = Sale.objects.filter(date_end__gte=today)
-    last_sales = [f'{s.title}, ends on {s.date_end}' for s in comic_sales]
-    return HttpResponse(json.dumps(last_sales), content_type='application/json')
+    all_sales = [f"{s.title}, ends on {s.date_end.strftime('%B %d')}" for s in comic_sales]
+    return HttpResponse(json.dumps(all_sales), content_type='application/json')
 
 
 def api_last_sales(request):
     today = timezone.datetime.today().date()
     comic_sales = Sale.objects.filter(date_end__gte=today, created_at__gte=today - datetime.timedelta(days=7))
-    last_sales = [f'{s.title}, ends on {s.date_end}' for s in comic_sales]
+    last_sales = [f"{s.title}, ends on {s.date_end.strftime('%B %d')}" for s in comic_sales]
     return HttpResponse(json.dumps(last_sales), content_type='application/json')
