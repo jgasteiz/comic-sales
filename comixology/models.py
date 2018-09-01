@@ -24,6 +24,7 @@ class WishListComic(models.Model):
     platform_id = models.IntegerField(blank=True)
     url = models.URLField()
     title = models.CharField(max_length=256, blank=True)
+    notified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title or self.url

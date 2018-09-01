@@ -11,7 +11,7 @@ class SaleAdmin(admin.ModelAdmin):
 
 class WishListComicAdmin(admin.ModelAdmin):
     ordering = ['title']
-    list_display = ['title', 'url']
+    list_display = ['title', 'url', 'notified']
 
 
 admin.site.register(models.Sale, SaleAdmin)
