@@ -14,7 +14,7 @@ class Sale(models.Model):
     cover_url = models.URLField(blank=True)
 
     class Meta:
-        ordering = ['-created_at', 'title']
+        ordering = ['date_end', 'title']
 
     def __str__(self):
         return f'{self.title} - {self.num_items} items - ends on {self.date_end}'
