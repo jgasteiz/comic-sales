@@ -7,4 +7,4 @@ class Command(BaseCommand):
     help = 'Parse the current comixology sales'
 
     def handle(self, *args, **options):
-        tasks.parse_sales_wishlist()
+        tasks.parse_sales()
