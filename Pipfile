@@ -12,6 +12,8 @@ gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
 sendgrid = "*"
+black = "*"
+isort = "*"
 
 [dev-packages]
 

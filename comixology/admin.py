@@ -4,14 +4,21 @@ from . import models
 
 
 class SaleAdmin(admin.ModelAdmin):
-    ordering = ['-created_at', 'title']
-    list_display = ['platform_id', 'title', 'date_end', 'num_items', 'url', 'created_at']
-    search_fields = ['title']
+    ordering = ["-created_at", "title"]
+    list_display = [
+        "platform_id",
+        "title",
+        "date_end",
+        "num_items",
+        "url",
+        "created_at",
+    ]
+    search_fields = ["title"]
 
 
 class WishListComicAdmin(admin.ModelAdmin):
-    ordering = ['title']
-    list_display = ['title', 'url', 'notified']
+    ordering = ["title"]
+    list_display = ["title", "url", "notified"]
 
 
 admin.site.register(models.Sale, SaleAdmin)

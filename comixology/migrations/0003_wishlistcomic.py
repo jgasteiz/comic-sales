@@ -5,18 +5,24 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('comixology', '0002_auto_20180828_1345'),
-    ]
+    dependencies = [("comixology", "0002_auto_20180828_1345")]
 
     operations = [
         migrations.CreateModel(
-            name='WishListComic',
+            name="WishListComic",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('url', models.URLField()),
-                ('title', models.CharField(blank=True, max_length=256)),
-                ('cover_url', models.URLField(blank=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("url", models.URLField()),
+                ("title", models.CharField(blank=True, max_length=256)),
+                ("cover_url", models.URLField(blank=True)),
             ],
-        ),
+        )
     ]

@@ -5,15 +5,13 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('comixology', '0005_auto_20180830_2016'),
-    ]
+    dependencies = [("comixology", "0005_auto_20180830_2016")]
 
     operations = [
         migrations.AlterField(
-            model_name='wishlistcomic',
-            name='platform_id',
+            model_name="wishlistcomic",
+            name="platform_id",
             field=models.IntegerField(blank=True, default=1),
             preserve_default=False,
-        ),
+        )
     ]

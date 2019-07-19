@@ -5,14 +5,10 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('comixology', '0003_wishlistcomic'),
-    ]
+    dependencies = [("comixology", "0003_wishlistcomic")]
 
     operations = [
         migrations.AddField(
-            model_name='sale',
-            name='cover_url',
-            field=models.URLField(blank=True),
-        ),
+            model_name="sale", name="cover_url", field=models.URLField(blank=True)
+        )
     ]

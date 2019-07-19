@@ -5,18 +5,15 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('comixology', '0006_auto_20180830_2016'),
-    ]
+    dependencies = [("comixology", "0006_auto_20180830_2016")]
 
     operations = [
         migrations.AlterModelOptions(
-            name='sale',
-            options={'ordering': ['-date_end', 'title']},
+            name="sale", options={"ordering": ["-date_end", "title"]}
         ),
         migrations.AddField(
-            model_name='wishlistcomic',
-            name='notified',
+            model_name="wishlistcomic",
+            name="notified",
             field=models.BooleanField(default=False),
         ),
     ]

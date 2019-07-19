@@ -5,22 +5,16 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('comixology', '0004_sale_cover_url'),
-    ]
+    dependencies = [("comixology", "0004_sale_cover_url")]
 
     operations = [
         migrations.AlterModelOptions(
-            name='sale',
-            options={'ordering': ['-created_at', 'title']},
+            name="sale", options={"ordering": ["-created_at", "title"]}
         ),
-        migrations.RemoveField(
-            model_name='wishlistcomic',
-            name='cover_url',
-        ),
+        migrations.RemoveField(model_name="wishlistcomic", name="cover_url"),
         migrations.AddField(
-            model_name='wishlistcomic',
-            name='platform_id',
+            model_name="wishlistcomic",
+            name="platform_id",
             field=models.IntegerField(null=True),
         ),
     ]
