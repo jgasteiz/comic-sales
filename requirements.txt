@@ -5,3 +5,4 @@ isort==4.3.21
 Scrapy==1.7.3
 sendgrid==6.0.5
 django-dotenv==1.4.2
+psycopg2==2.8.3

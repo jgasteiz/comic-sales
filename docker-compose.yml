@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+    db:
+        image: postgres
+        restart: always
+        volumes:
+            - ${POSTGRES_DATA_PATH}:/var/lib/postgresql/data:cached
+            - ${SQL_DIR_PATH}:/sql:cached
+            - /tmp:/tmp:cached
+        environment:
+            PGDATA: /var/lib/postgresql/data/pgdata
+
+    web:
+        build: .
+        environment:
+            - PYTHONUNBUFFERED=1
+            - DEBUG=1
+        working_dir: /code
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+        - .:/code
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db

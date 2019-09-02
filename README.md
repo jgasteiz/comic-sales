@@ -2,8 +2,7 @@
 
 ## Installation
 
-- `mkvirtualenv comic-sales`
-- `pip install -r requirements.txt`
-- `./manage.py migrate`
-- `./manage.py parsesales`
-- `./manage.py runserver`
+- docker-compose build
+- docker-compose run web ./manage.py migrate
+- docker-compose run web ./manage.py parsesales
+- docker-compose up
