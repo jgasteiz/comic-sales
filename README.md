@@ -2,7 +2,11 @@
 
 ## Installation
 
-- docker-compose build
-- docker-compose run web ./manage.py migrate
-- docker-compose run web ./manage.py parsesales
-- docker-compose up
+```
+python3 -m venv env
+source ./env/bin/activate
+pip install -r requirements.txt
+./manage.py migrate
+./manage.py parsesales
+./manage.py runserver
+```
