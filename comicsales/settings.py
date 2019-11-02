@@ -112,5 +112,9 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+FROM_EMAIL = os.environ.get("FROM_EMAIL")
+TO_EMAIL = os.environ.get("TO_EMAIL")
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
