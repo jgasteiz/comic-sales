@@ -7,8 +7,6 @@ from sendgrid.helpers import mail as mail_helpers
 
 
 def send_sale_email(sale):
-    if not settings.SENDGRID_API_KEY:
-        return
     sg = sendgrid.SendGridAPIClient(api_key=settings.SENDGRID_API_KEY)
     from_email = mail_helpers.Email(settings.FROM_EMAIL)
     to_email = mail_helpers.Email(settings.TO_EMAIL)
@@ -19,8 +17,6 @@ def send_sale_email(sale):
 
 
 def send_wishlist_item_email(wishlist_comic):
-    if not settings.SENDGRID_API_KEY:
-        return
     sg = sendgrid.SendGridAPIClient(api_key=settings.SENDGRID_API_KEY)
     from_email = mail_helpers.Email(settings.FROM_EMAIL)
     to_email = mail_helpers.Email(settings.TO_EMAIL)
