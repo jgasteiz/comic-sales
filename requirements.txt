@@ -1,9 +1,10 @@
 black==19.10b0
 Django==2.2.6
-django-dotenv==1.4.2
 django-heroku==0.3.1
 gunicorn==19.9.0
 ipdb==0.12.2
 isort==4.3.21
 Scrapy==1.8.0
 sendgrid==6.1.0
+django-extensions==2.2.9
+envparse==0.2.0

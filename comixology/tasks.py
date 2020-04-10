@@ -1,6 +1,5 @@
-from scrapy import crawler
-
 from comixology import spiders
+from scrapy import crawler
 
 
 def parse_sales():
