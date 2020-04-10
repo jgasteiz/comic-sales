@@ -84,7 +84,7 @@ class SalesSpider(scrapy.Spider):
         sale.save()
 
         # If it's a new sale, send an email.
-        if created and settings.SENDGRID_API_KEY:
+        if created and not settings.DEBUG:
             email_tasks.send_sale_email(sale)
 
 
@@ -123,7 +123,7 @@ class WishlistComicSpider(scrapy.Spider):
                 ".comic-item .content-img-link::attr(href)"
             ).extract()
             matches = [url for url in comic_urls if url.endswith(str(comic_id))]
-            if len(matches) > 0 and settings.SENDGRID_API_KEY:
+            if len(matches) > 0 and not settings.DEBUG:
                 wishlist_comic = models.WishListComic.objects.get(platform_id=comic_id)
                 email_tasks.send_wishlist_item_email(wishlist_comic)
                 wishlist_comic.notified = True
